@@ -3,6 +3,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
     <link type="text/css" href="__ROOT__/Public/css/vote.css"/>
+    <script src="__ROOT__/Public/js/jquery-1.8.3.min.js" ></script>
     <title>投票</title>
     <style type="text/css">
         .image{
@@ -44,8 +45,7 @@
         }
     </style>
 
-    <script
-            type="text/javascript">
+    <script type="text/javascript">
         window.onload = function()
         {
             support_graph = document.getElementById('support');
@@ -93,14 +93,14 @@
         <input name="serch" style="width: 70%;height: 10%;vertical-align: middle;font-size: 30px"/><button style="font-size: 30px;vertical-align: middle">搜索</button>
     </div>
 </div>
-<div class="vote" style="margin-top: 10px;position:absolute;top: 300px;height: 70%;;overflow: scroll;">
+<div id="vote" class="vote" style="margin-top: 10px;position:absolute;top: 300px;height: 70%;;overflow: scroll;width: 100%;text-align: center;">
     <div class="voter">
         <ul style="width: 100%;list-style: none">
             <foreach name="vote" item="vote" key="k">
-                <li style="width: 100%;font-size: 26px">
+                <li style="width: 100%;font-size: 24px">
                     <table style="width: 100%;height: 30%;">
                         <tr>
-                            <td style="width: 30%;">
+                            <td style="width: 27%;">
                                 <a>
                                     <img src="__ROOT__/Public/images/moneyperson.png" style="width: 100%;height: auto" class="image">
                                 </a>
@@ -116,7 +116,7 @@
                                         <td style="text-align: center"><span style="font-size: 30px">{$vote.vote_count}</span>票</td>
                                     </tr>
                                     <tr>
-                                        <td style="text-align: center">
+                                        <td id="current" style="text-align: center">
                                             当前排名：{$k+1}
                                         </td>
                                     </tr>
@@ -124,105 +124,28 @@
 
                                 </table>
                             </td>
-                            <td style="width: 15%;">
+                            <td style="width: 15%;margin-right: 20px;">
                                 <form action="add_vote" method="post">
                                     <input name="id" type="hidden" value="{$vote.vote_id}"/>
-                                    <button type="submit" style="width: 80%;height: 40px;font-size: 28px" onclick="vote(this,true)">投票</button>
+                                    <input name="order" type="hidden" value="{$k}"/>
+                                    <button id="addvote" type="submit" style="width: 80%;height: 40px;font-size: 28px" >投票</button>
                                 </form>
                             </td>
+                            <td style="width: 5%"></td>
                         </tr>
                     </table>
                 </li>
             </foreach>
-            <li style="width: 100%;font-size: 26px">
-                <table style="width: 100%;height: 30%;">
-                    <tr>
-                        <td style="width: 30%;">
-                            <a>
-                                <img src="__ROOT__/Public/image/chelizi.jpg" class="image">
-                            </a>
-                        </td>
-                        <td style="width:35%;text-align: left">
-                            <a>某先生：</a><br>
-                            <p style="font-size: 24px">医学专家，为人民服务30年！</p>
-                        </td>
-                        <td style="width:20%;text-align: left">
-                            <table>
-                                <tr>
-                                <tr>
-                                    <td style="text-align: center"><span style="font-size: 30px">0</span>票</td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: center">
-                                        当前排名：20
-                                    </td>
-                                </tr>
-                                </tr>
-
-                            </table>
-                        </td>
-                        <td style="width: 15%;">
-                            <button style="width: 80%;height: 40px;font-size: 28px" onclick="vote(this,true)">投票</button>
-                        </td>
-                    </tr>
-                </table>
-            </li>
-            <li style="width: 100%;font-size: larger">
-                <table style="width: 100%;height: 30%;">
-                    <tr>
-                        <td style="width: 30%;">
-                            <a>
-                                <img src="__ROOT__/Public/image/chelizi.jpg">
-                            </a>
-                        </td>
-                        <td style="width:60%;text-align: left">
-                            <p style="font-size: 24px">某女士：</p>
-                        </td>
-                        <td style="width: 10%">
-                            <button style="width: 100%;height: 20%" onclick="vote(this,true)">投票</button>
-                        </td>
-                    </tr>
-                </table>
-            </li>
-            <li style="width: 100%;font-size: larger">
-                <table style="width: 100%;height: 30%;">
-                    <tr>
-                        <td style="width: 30%;">
-                            <a>
-                                <img src="__ROOT__/Public/image/chelizi.jpg">
-                            </a>
-                        </td>
-                        <td style="width:60%;text-align: left">
-                            <p>啊实打实地方阿斯顿发达案发生地方啊实打实地方阿斯顿发达案发生地方啊实打实地方阿斯顿发达案发生地方啊实打实地方阿斯顿发达案发生地方啊实打实地方阿斯顿发达案发生地方</p>
-                        </td>
-                        <td style="width: 10%">
-                            <button style="width: 100%;height: 20%" onclick="vote(this,true)">投票</button>
-                        </td>
-                    </tr>
-                </table>
-            </li>
-            <li style="width: 100%;font-size: larger">
-                <table style="width: 100%;height: 30%;">
-                    <tr>
-                        <td style="width: 30%;">
-                            <a>
-                                <img src="__ROOT__/Public/image/chelizi.jpg">
-                            </a>
-                        </td>
-                        <td style="width:60%;text-align: left">
-                            <p>啊实打实地方阿斯顿发达案发生地方啊实打实地方阿斯顿发达案发生地方啊实打实地方阿斯顿发达案发生地方啊实打实地方阿斯顿发达案发生地方啊实打实地方阿斯顿发达案发生地方</p>
-                        </td>
-                        <td style="width: 10%">
-                            <button style="width: 100%;height: 20%" onclick="vote(this,true)">投票</button>
-                        </td>
-                    </tr>
-                </table>
-            </li>
-
-
         </ul>
     </div>
 </div>
+<script>
+    $(document).ready(function(){
+        $("#addvote").click(function(){
+            $("#vote").load("vote.html");
+        }) ;
+    });
+</script>
 <!--<table>-->
 
 <!--<tr>-->

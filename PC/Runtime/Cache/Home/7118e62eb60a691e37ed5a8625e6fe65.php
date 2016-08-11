@@ -1,1 +1,2 @@
-<?php if (!defined('THINK_PATH')) exit();?><h1>Welcome to ZS movie!</h1>
+<?php if (!defined('THINK_PATH')) exit();?><h1>宙斯</h1>
+<a href="vote.html">投票</a>
