@@ -38,12 +38,12 @@ if (version_compare(PHP_VERSION, '5.3.0', '<')) {
 define('APP_DEBUG', true);
 
 // 定义应用目录
-if(is_mobile()){
-    define('APP_PATH','./Mobile/');
-}
-else{
+//if(is_mobile()){
+//    define('APP_PATH','./Mobile/');
+//}
+//else{
     define('APP_PATH', './PC/');
-}
+//}
 
 // 引入ThinkPHP入口文件
 require './ThinkPHP/ThinkPHP.php';

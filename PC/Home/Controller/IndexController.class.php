@@ -18,7 +18,7 @@ class IndexController extends Controller
         //实例化模型
         $m=M('Vote');
         $vote=$m->order('vote_count desc')->select();
-        var_dump(json_encode($vote));
+//        var_dump(json_encode($vote));
         $detail=$vote['0']['user_detail'];
 
         $id=I('post.id');
@@ -54,5 +54,23 @@ class IndexController extends Controller
             $m->where('vote_id='.I('post.id'))->save($array);
             redirect("vote");
         }
+    }
+    public function adapt(){
+        /*方法1、获取用户ip地址，可以查看是否已投票,本地测试ip为：：1，效果不好*/
+        $ip=$_SERVER["REMOTE_ADDR"];
+
+//        print_r($ip);
+        /*方法2、获取用户username，查看是否在对应投票栏下已存在投票记录*/
+//        if($_COOKIE['username']){
+        //实例化模型
+        $m=M('Vote');
+        $vote=$m->order('vote_count desc')->select();
+//        var_dump(json_encode($vote));
+        $detail=$vote['0']['user_detail'];
+
+        $id=I('post.id');
+//        $m->where('vote_id="'.$id.'"')->save($array);
+        $this->assign("vote",$vote);
+        $this->display();
     }
 }
