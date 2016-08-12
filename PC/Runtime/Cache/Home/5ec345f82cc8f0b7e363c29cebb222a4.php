@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
-    <link type="text/css" href="/movie/Public/css/vote.css"/>
+    <!--<link rel="stylesheet" href="/movie/Public/css/vote.css"/>-->
     <script src="/movie/Public/js/jquery-1.8.3.min.js" ></script>
     <title>投票</title>
     <style type="text/css">
@@ -83,7 +83,7 @@
     </script>
 </head>
 <body>
-<div style="width: 100%;height: 30%;position: fixed;top: 0;left: 0;">
+<div style="width: 100%;height: 30%;position: fixed;top: 0;left: 0;z-index: 100;">
     <div style="width: 100%;text-align: center">
         <h1>投票活动？</h1>
         <h3>活动时间：</h3>
@@ -127,7 +127,7 @@
                                 <form action="add_vote" method="post">
                                     <input name="id" type="hidden" value="<?php echo ($vote["vote_id"]); ?>"/>
                                     <input name="order" type="hidden" value="<?php echo ($k); ?>"/>
-                                    <button id="addvote" type="submit" style="width: 80%;height: 40px;font-size: 28px" >投票</button>
+                                    <button id="addvote" type="submit" class="button">投票</button>
                                 </form>
                             </td>
                             <td style="width: 5%"></td>
