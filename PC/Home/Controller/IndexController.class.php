@@ -42,7 +42,7 @@ class IndexController extends Controller
         $voter= $m->where('vote_id='.I('post.id'))->select();
         $userip=(string)$voter['0']['user_ip'];
 
-        var_dump($userip);
+//        var_dump($userip);
         //截取用户详情的第一句作为简介。有句号则以句号，没有句号就截取30个字符串？
         if(strpos($userip,$ip)!==false){
             //已投票
@@ -67,9 +67,53 @@ class IndexController extends Controller
         $vote=$m->order('vote_count desc')->select();
 //        var_dump(json_encode($vote));
         $detail=$vote['0']['user_detail'];
-
+        var_dump($vote);
         $id=I('post.id');
+
 //        $m->where('vote_id="'.$id.'"')->save($array);
+        $this->assign("vote",$vote);
+    }
+    public function data(){
+        $m=M('Vote');
+        $vote=$m->where('vote_id='.$_POST['id'])->select();
+        //查询触发投票事件对应的数据库ip列表
+        $voteip=(string)$vote['0']['user_ip'];
+        $votecount=(int)$vote['0']['vote_count'];
+        $newip=(string)$_SERVER['REMOTE_ADDR'];
+        $array['newip']=$newip;
+        $array['voteip']=$voteip;
+        $array['id']=I('post.id');
+        //匹配当前用户投票的ip是否成功
+        if(strpos($voteip,$newip)!==false){
+            $array['userip']="exist";
+//            $m->where('user_ip='.$voteip)->save($array);
+            $back['status']=1;
+        }else{
+            $updateip=$voteip.",".$newip;
+            $newdata['user_ip']=$updateip;
+            $m->where('vote_id='.I('post.id'))->setInc('vote_count',1);
+            $m->where('vote_id='.I('post.id'))->save($newdata);
+
+//            $array['userip']=$_SERVER['REMOTE_ADDR'];
+            $array['userip']=$updateip;
+            $back['status']="0";
+            $back['vote_count']=$votecount;
+        }
+//        var_dump($ip);
+        return $this->ajaxReturn($back,"json");
+    }
+    public function responsive(){
+        /*方法1、获取用户ip地址，可以查看是否已投票,本地测试ip为：：1，效果不好*/
+        $ip=$_SERVER["REMOTE_ADDR"];
+
+//        print_r($ip);
+        /*方法2、获取用户username，查看是否在对应投票栏下已存在投票记录*/
+//        if($_COOKIE['username']){
+        //实例化模型
+        $m=M('Vote');
+        $vote=$m->order('vote_count desc')->select();
+        $id=I('post.id');
+//        var_dump($vote.vote_ip);
         $this->assign("vote",$vote);
         $this->display();
     }
