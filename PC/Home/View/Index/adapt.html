@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-        <link rel="stylesheet" href="__ROOT__/Public/css/vote.css"/>
+        <link rel="stylesheet" href="__ROOT__/Public/css/adapt.css"/>
         <script src="__ROOT__/Public/js/jquery-1.8.3.min.js"></script>
         <title>宙斯微电影--投票</title>
         <script type="text/javascript">
@@ -15,50 +15,57 @@
         </script>
     </head>
     <body>
-        <header id="header">
-            <!--<h1>宙斯微电影</h1>-->
-            <nav class="link">
-                <!--<h2>网站导航</h2>-->
-                <ul>
-                    <li>
-                        <a href="http://www.yjplchina.com/">云尖评论</a>
-                    </li>
-                    <li>
-                        <a>犬呀头条</a>
-                    </li>
-                    <li>
-                        <a href="http://www.bosswbw.com/">网报网</a>
-                    </li>
-                    <li>
-                        <a>B财经</a>
-                    </li>
-                </ul>
-            </nav>
-            <div id="adver">
-                <a>
-                    <img  src="__ROOT__/Public/images/zhousi.png" class="image">
-                </a>
-            </div>
-            <div id="search">
-                <form>
-                    <input type="text" class="search" placeholder="请输入关键字">
-                    <button class="button">搜索</button>
-                </form>
-            </div>
-        </header>
+        <!--<header id="header">-->
+            <!--&lt;!&ndash;<h1>宙斯微电影</h1>&ndash;&gt;-->
+            <!--<nav class="link">-->
+                <!--&lt;!&ndash;<h2>网站导航</h2>&ndash;&gt;-->
+                <!--<ul>-->
+                    <!--<li>-->
+                        <!--<a href="http://www.yjplchina.com/">云尖评论</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a>犬呀头条</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a href="http://www.bosswbw.com/">网报网</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<a>B财经</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</nav>-->
 
+        <!--</header>-->
+        <!--<div id="adver">-->
+            <!--<a>-->
+                <!--<img  src="__ROOT__/Public/images/zhousi.png" class="image">-->
+            <!--</a>-->
+        <!--</div>-->
+        <div id="search">
+            <form>
+                <input type="text" class="search" placeholder="请输入关键字">
+                <button class="button">搜索</button>
+            </form>
+        </div>
         <div id="voterlist">
             <div>
                 <ul style="list-style: none">
                     <foreach name="vote" item="vote">
                         <li class="list" id="list">
-                            <div style="max-width: 6.4rem;min-width: 3.2rem;">
-                                <div style="float: left;text-align: left;">
+                            <div style="max-width: 6.4rem;min-width: 3.2rem;margin: 0 auto">
+                                <div style="float: left;text-align: left;width: 40%;position: relative">
                                     <a>
                                         <img src="__ROOT__/Public/images/moneyperson.png" style="width: 50%;border-radius: 100px;">
                                     </a>
                                 </div>
-                                <div style="float:left;width: 40%;">{$vote.user_detail}</div>
+                                <div style="float:left;width: 40%;">
+                                    <div>
+                                        {$vote.user_name}
+                                    </div>
+                                    <div>
+                                        {$vote.user_detail}
+                                    </div>
+                                </div>
                                 <div style="float: left;width: 40%;">
                                     <form action="add_vote" method="post">
                                         <input name="id" type="hidden" value="{$vote.vote_id}"/>
@@ -75,13 +82,13 @@
 
         </div>
 
-        <footer id="footer">
-            <div class="top">
-                客户端 | 触屏版 | 电脑版
-            </div>
-            <div>成都宙斯影视文化传播有限公司</div>
-            <div>CCTV央视微电影青春频道</div>
-        </footer>
+        <!--<footer id="footer">-->
+            <!--<div class="top">-->
+                <!--客户端 | 触屏版 | 电脑版-->
+            <!--</div>-->
+            <!--<div>成都宙斯影视文化传播有限公司</div>-->
+            <!--<div>CCTV央视微电影青春频道</div>-->
+        <!--</footer>-->
     </body>
 
 </html>

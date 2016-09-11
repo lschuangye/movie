@@ -103,12 +103,9 @@ class IndexController extends Controller
         return $this->ajaxReturn($back,"json");
     }
     public function responsive(){
-        /*方法1、获取用户ip地址，可以查看是否已投票,本地测试ip为：：1，效果不好*/
+        /*方法1、获取用户ip地址，可以查看是否已投票,本地测试ip为：：1*/
         $ip=$_SERVER["REMOTE_ADDR"];
 
-//        print_r($ip);
-        /*方法2、获取用户username，查看是否在对应投票栏下已存在投票记录*/
-//        if($_COOKIE['username']){
         //实例化模型
         $m=M('Vote');
         $vote=$m->order('vote_count desc')->select();
@@ -116,5 +113,24 @@ class IndexController extends Controller
 //        var_dump($vote.vote_ip);
         $this->assign("vote",$vote);
         $this->display();
+    }
+    public function voteSearch(){
+        $m=M('Vote');
+        $key=I('post.search');
+        $where['user_name']=array('like','%'.$key.'%');
+        $where['user_detail']=array('like','%'.$key.'%');
+        $where['vote_id']=array('like','%'.$key.'%');
+
+        $where['_logic']='or';
+        $map['_complex']=$where;
+        $result=$m->where($map)->select();
+        if($result){
+            $this->assign("vote",$result);
+            $this->display("responsive");
+//            $this->infolist($result);
+//            $this->success("success","index.html");
+        }else{
+            $this->error("null");
+        }
     }
 }
