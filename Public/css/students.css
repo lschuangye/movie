@@ -2,6 +2,7 @@
 body,h1,h2,h3,p,ul,ol,form{
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 #header{
     width:100%;
@@ -10,6 +11,7 @@ body,h1,h2,h3,p,ul,ol,form{
     position: fixed;
     top: 0;
     z-index: 100;
+    border-bottom: 1px solid;
 }
 #header .logo{
     width: 20%;
@@ -54,26 +56,65 @@ body,h1,h2,h3,p,ul,ol,form{
 #header .link ul li:hover {
     background-color: rgba(159, 100, 248, 0.17);
 }
-#header .search{
+#content{
     max-width: 992px;
-    margin: 0 auto;
-    height: 30px;
+    /*background-color: #9B410E;*/
+    width: 100%;
+    height: 300px;
+    display: inline-block;
+    margin-top: 75px;
     text-align: center;
-    /*background-color: #f0c040;*/
 }
-#header .search input{
-    width: 80%;
-    height: 25px;
-    border: 1px dotted #f09034;
-    float: left;
+#content .list{
+    margin:0 0;
+    width: 100%;
 }
-#header .search button{
-    float: left;
-    height: 28px;
-    width: 19%;
+#content .list h2{
+    color: #f60000;
 }
-/*手机屏幕尺寸的布局参数*/
-@media (max-width: 640px){
+#content .list .no1 p{
+    margin-left: 3%;
+    text-indent: 2em;
+    text-align: left;
+}
+#content .list .no1{
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+#content .list .no2{
+    width: 100%;
+    margin-top: 5%;
+}
+#content .list .no2 table{
+    border: 1px solid;
+}
+#content .list .no2 table tr td{
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    text-align: left;
+}
+#content .list .no2 table th{
+    text-align: center;
+    border-bottom:1px solid;
+    border-right: 1px solid;
+}
+#content .list .no2 tr{
+    border: 1px solid;
+}
+#content .list .no2 table tr td p{
+    text-align: left;
+}
+#content .list .no3{
+    width: 100%;
+    margin-top: 5%;
+}
+#content .list .no3 p{
+    margin-left: 3%;
+    text-indent: 2em;
+    text-align: left;
+}
+@media (max-width: 640px) {
     #header{
         height: 45px;
     }
@@ -97,79 +138,4 @@ body,h1,h2,h3,p,ul,ol,form{
         width: 25%;
         font-size: 18px;
     }
-    #votelist .list{
-        top: 60px;;
-    }
-    #votelist .list .photo img{
-        border-radius: 100px;
-    }
-}
-
-/*******votelist**************/
-#votelist{
-    max-width: 992px;
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
-    top: 105px;
-}
-#votelist .list{
-    width: 100%;
-    padding-top: 10px;
-    float: left;
-    border-bottom: dotted 1px #ff5306;
-}
-#votelist .list .photo{
-    float: left;
-    width: 25%;
-}
-#votelist .list .photo img{
-    width: 100%;
-    border-radius:400px;
-}
-#votelist .list .detail{
-    margin-left: 1%;
-    float: left;
-    width: 45%;
-    font-size: 14px;
-    margin-left: 4%;
-    /*text-align: center;*/
-}
-#votelist .list .detail a{
-    margin-top: 30px;
-    font-size: 16px;
-    color: #2b47fd;
-}
-#votelist .list .detail p{
-    word-break: break-all;
-    text-indent: 2em;
-}
-#votelist .list .votesum{
-    float: left;
-    width: 15%;
-    text-align: center;
-}
-
-
-#votelist .list .votebtn{
-    float: left;
-    text-align: center;
-    width: 26%;
-}
-#votelist .list .votebtn span p{
-    /*margin-top: 30%;*/
-    font-size: 12px;
-}
-#votelist .list .votebtn span a{
-    font-size: 20px;
-    color: #ff7a27;
-}
-#votelist .list .votebtn button{
-    /*margin:40% 0;*/
-    width: 100%;
-    height: 40px;
-    font-size: 20px;
-    border-radius: 50px;
-    font-family: 方正舒体;
-    background-color: #fafafa;
 }

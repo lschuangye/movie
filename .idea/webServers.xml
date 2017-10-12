@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="b19b57a4-2308-45c8-bf83-e810938733fc" name="farm" url="http://chenjiangxue.com">
+        <fileTransfer host="chenjiangxue.com" port="22" accessType="SFTP" password="dffedff8dff3dfdedfd8dfd3df92df92df92" username="root">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
